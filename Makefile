@@ -68,6 +68,9 @@ release: clean
 	GOOS=linux   GOARCH=amd64  $(GO) build -ldflags "$(LDFLAGS)" -o release/$(BINARY)-linux-amd64 .
 	GOOS=linux   GOARCH=arm64  $(GO) build -ldflags "$(LDFLAGS)" -o release/$(BINARY)-linux-arm64 .
 	GOOS=darwin  GOARCH=arm64  $(GO) build -ldflags "$(LDFLAGS)" -o release/$(BINARY)-darwin-arm64 .
+	# Generate checksums for all release artifacts
+	@cd release && sha256sum * > checksums.txt
+	@echo "Release binaries and checksums written to release/"
 
 ## version: print version info
 version:
