@@ -94,3 +94,8 @@ tidy:
 # NOTE: that also happen to use 1053 (e.g. some VPN clients I've seen grab that port)
 run: build
 	./$(BINARY) -conf Corefile -dns.port 5353
+
+## watch: rebuild and restart on source file changes (requires entr)
+# NOTE: useful during active development — install entr with: brew install entr
+watch:
+	find . -name '*.go' | entr -r $(MAKE) run
