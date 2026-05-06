@@ -56,8 +56,9 @@ fmt:
 check: fmt vet lint
 
 ## docker: build a Docker image
+# NOTE: also tagging as 'latest' for convenience during local development
 docker:
-	docker build -t coredns:$(VERSION) .
+	docker build -t coredns:$(VERSION) -t coredns:latest .
 
 ## release: build release binaries for multiple platforms
 release: clean
