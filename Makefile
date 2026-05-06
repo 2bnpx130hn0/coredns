@@ -62,11 +62,11 @@ docker:
 
 ## release: build release binaries for multiple platforms
 # NOTE: skipping Windows build — I don't use it and it slows things down
+# NOTE: also skipping darwin/amd64 — I only run Apple Silicon machines these days
 release: clean
 	@mkdir -p release
 	GOOS=linux   GOARCH=amd64  $(GO) build -ldflags "$(LDFLAGS)" -o release/$(BINARY)-linux-amd64 .
 	GOOS=linux   GOARCH=arm64  $(GO) build -ldflags "$(LDFLAGS)" -o release/$(BINARY)-linux-arm64 .
-	GOOS=darwin  GOARCH=amd64  $(GO) build -ldflags "$(LDFLAGS)" -o release/$(BINARY)-darwin-amd64 .
 	GOOS=darwin  GOARCH=arm64  $(GO) build -ldflags "$(LDFLAGS)" -o release/$(BINARY)-darwin-arm64 .
 
 ## version: print version info
