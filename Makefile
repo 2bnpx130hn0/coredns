@@ -81,3 +81,9 @@ version:
 help:
 	@echo "Usage:"
 	@sed -n 's/^##//p' $(MAKEFILE_LIST) | column -t -s ':' | sed -e 's/^/ /'
+
+## tidy: tidy and verify go modules
+# NOTE: I keep forgetting to run this before committing — making it a named target
+tidy:
+	$(GO) mod tidy
+	$(GO) mod verify
