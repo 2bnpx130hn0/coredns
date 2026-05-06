@@ -87,3 +87,8 @@ help:
 tidy:
 	$(GO) mod tidy
 	$(GO) mod verify
+
+## run: build and immediately run the binary with a local Corefile (if present)
+# NOTE: handy shortcut for quick local testing — assumes a Corefile exists in the repo root
+run: build
+	./$(BINARY) -conf Corefile
