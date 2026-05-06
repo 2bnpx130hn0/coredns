@@ -90,6 +90,7 @@ tidy:
 
 ## run: build and immediately run the binary with a local Corefile (if present)
 # NOTE: handy shortcut for quick local testing — assumes a Corefile exists in the repo root
-# NOTE: passing -dns.port 1053 so I don't need sudo to bind to port 53 during local dev
+# NOTE: passing -dns.port 5353 instead of 1053 — avoids conflicts with other local services
+# NOTE: that also happen to use 1053 (e.g. some VPN clients I've seen grab that port)
 run: build
-	./$(BINARY) -conf Corefile -dns.port 1053
+	./$(BINARY) -conf Corefile -dns.port 5353
