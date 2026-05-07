@@ -96,7 +96,7 @@ run: build
 	./$(BINARY) -conf Corefile -dns.port 5353
 
 ## watch: rebuild and restart on source file change
-# NOTE: requires entr to be installed (brew install entr / apt install entr)
-# NOTE: useful during active development — saves me from manually re-running 'make run'
+# NOTE: requires 'entr' to be installed (brew install entr)
+# NOTE: useful when iterating on plugin logic — saves me from manually re-running 'make run'
 watch:
-	find . -name '*.go' | entr -r $(MAKE) run
+	find . -name '*.go' | entr -r make run
