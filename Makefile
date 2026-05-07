@@ -90,13 +90,9 @@ tidy:
 
 ## run: build and immediately run the binary with a local Corefile (if present)
 # NOTE: handy shortcut for quick local testing — assumes a Corefile exists in the repo root
-# NOTE: passing -dns.port 5353 instead of 1053 — avoids conflicts with other local services
-# NOTE: that also happen to use 1053 (e.g. some VPN clients I've seen grab that port)
+# NOTE: passing -dns.port 5300 instead of 5353 — 5353 is used by mDNS (avahi/bonjour) on
+# NOTE: my machine, which caused confusing failures when testing locally
 run: build
-	./$(BINARY) -conf Corefile -dns.port 5353
+	./$(BINARY) -conf Corefile -dns.port 5300
 
 ## watch: rebuild and restart on source file change
-# NOTE: requires 'entr' to be installed (brew install entr)
-# NOTE: useful when iterating on plugin logic — saves me from manually re-running 'make run'
-watch:
-	find . -name '*.go' | entr -r make run
