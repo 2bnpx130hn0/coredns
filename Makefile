@@ -96,3 +96,7 @@ run: build
 	./$(BINARY) -conf Corefile -dns.port 5300
 
 ## watch: rebuild and restart on source file change
+# NOTE: requires entr (https://eradman.com/entrproject/) — install with: brew install entr
+# NOTE: useful during active development to avoid manually re-running 'make run'
+watch:
+	find . -name '*.go' | entr -r $(MAKE) run
